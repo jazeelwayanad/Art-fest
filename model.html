@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+
+
+    <h2>Choose Your Car</h2>
+<hr /><form action="" name ="form1" onSubmit="actionOnSubmit()" method ="post" >
+Choose Car Make:
+<select id="slct1" name="slct1" onchange="populate(this.id,'slct2')">
+  <option value=""></option>
+  <option value="Chevy">Chevy</option>
+  <option value="Dodge">Dodge</option>
+  <option value="Ford">Ford</option>
+</select>
+Choose Car Model:
+<select id="slct2" name="slct2"></select>
+<input type="submit" value="Go" class="button">
+</form>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.0/jquery.min.js"></script>
+
+<script>
+
+function populate(s1,s2){
+	var s1 = document.getElementById(s1);
+	var s2 = document.getElementById(s2);
+	s2.innerHTML = "";
+	if(s1.value == "Chevy"){
+		var optionArray = ["|","F:/Art Fest/chevy/camaro.html|Camaro","corvette|Corvette","impala|Impala"];
+	} else if(s1.value == "Dodge"){
+		var optionArray = ["|","avenger|Avenger","challenger|Challenger","charger|Charger"];
+	} else if(s1.value == "Ford"){
+		var optionArray = ["|","mustang|Mustang","shelby|Shelby"];
+	}
+	for(var option in optionArray){
+		var pair = optionArray[option].split("|");
+		var newOption = document.createElement("option");
+		newOption.value = pair[0];
+		newOption.innerHTML = pair[1];
+		s2.options.add(newOption);
+	}
+}
+function actionOnSubmit()
+        {
+        
+        //Get the select select list and store in a variable
+        var e = document.getElementById("slct2");
+        
+        //Get the selected value of the select list
+        var formaction = e.options[e.selectedIndex].value;
+        
+        //Update the form action
+        document.form1.action = formaction;
+        
+        }
+
+    // *****************************************************
+
+</script>
+
+
+
+    <!-- ***************************************** -->
+    <!-- <form name ="form1" onSubmit="actionOnSubmit()" method ="post" target="_blank">
+
+        <select id="formchoice" name="formchoice">
+        
+        <option value="https://stackoverflow.com/">function 1</option>
+        <option value="/formaction2">function 2</option>
+        <option value ="/formaction3">function 3</option>
+        
+        </select>
+        <input type="submit" value="Go" class="button">
+        </form>
+        
+        
+        <script>
+        
+        function actionOnSubmit()
+        {
+        
+        //Get the select select list and store in a variable
+        var e = document.getElementById("formchoice");
+        
+        //Get the selected value of the select list
+        var formaction = e.options[e.selectedIndex].value;
+        
+        //Update the form action
+        document.form1.action = formaction;
+        
+        }
+        </script> -->
+  </body>
+</html>

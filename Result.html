@@ -1,0 +1,138 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" href="/Images/1.jpg" type="image/x-icon" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Artfest</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="Rstyle.css">
+</head>
+
+<body>
+    <div class="main-section">
+        <header>
+            <div class="container" id="myHeader" style="color: black;">
+                <a class="logo" href="#" title="USWA" style="color: black;">Artfest<sup><small>TM</small></sup></a>
+
+
+                <ul class="navlinks" style="color: black;">
+                    <div class="icon cancel-btn">
+                        <span class="fas fa-times"></span>
+                    </div>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="Result.html">Results</a></li>
+                    <li><a href="#">Updates</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+                <div class="icon menu-btn">
+                    <span class="fas fa-bars" style="color: black;"></span>
+                </div>
+            </div>
+
+
+
+        </header>
+        <div class="formsection">
+            <div class="form-section">
+                <form action="" name="selectionform" onSubmit="actionOnSubmit()" method="post">
+                    <center><h2>Check your Result<h2></center>
+                        <br>
+                    <div class="selectoption">
+                        <label for="section">Section &nbsp;</label>
+                        <select name="section" id="section" onchange="populate(this.id,'program')">
+                            <option value="0" selected disabled>--Choose your Section--</option>
+                            <option value="bidaya">Bidaya</option>
+                            <option value="oola">Oola</option>
+                            <option value="thaniya">Thaniya</option>
+                            <option value="thanaviya">Thanaviya</option>
+                            <option value="aliya">Aliya</option>
+                        </select>
+                    </div>
+                    <div class="selectoption">
+                        <label for="program">Program</label>
+                        <select name="program" id="program">
+                            <!-- <option value="" selected>--Choose Your Program--</option> -->
+                        </select>
+                    </div>
+                    <div class="selectoption">
+                        <center><input type="submit" value="Submit" class="button"></center>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- <a href="#"><i class="fa fa-arrow-up"></i></a> -->
+    <footer>
+        <div class="footer-container" id="footer"><br />
+            <div class="site-map">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="Result.html">Results</a></li>
+                    <li><a href="#">Updates</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </div><br />
+            <div class="site-map">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="Result.html">Results</a></li>
+                    <li><a href="#">Updates</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </div><br />
+        </div>
+        <hr>
+        <div class="footer-credit">
+            <p>Copyright &#169 2021 <a href="index.htm">Artfest</a>. All Rights Reserved<br><small>designed and developed
+                    by <a href="#">jazeel wayanad</a></small></p>
+        </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+
+        function populate(s1, s2) {
+            var s1 = document.getElementById(s1);
+            var s2 = document.getElementById(s2);
+            s2.innerHTML = "";
+            if (s1.value == "bidaya") {
+                var optionArray = ["Conversation|Conversation", "/bidaya/song.html|Song", "Speech an Song|Speech and Song", "kuttikavitha|kuttikavitha"];
+            } else if (s1.value == "oola") {
+                var optionArray = ["ms paint|ms paint", "Song|Song", "Speech ARB|Speech ARB", "Speech MLM|Speech MLM"];
+            } else if (s1.value == "thaniya") {
+                var optionArray = ["junction speech|Junction speech", "Song|Song", "Speech ARB|Speech ARB", "Speech MLM|Speech MLM"];
+            } else if (s1.value == "thanaviya") {
+                var optionArray = ["Song|Song", "Speech ARB|Speech ARB", "debate|Debate", "Speech MLM|Speech MLM"];
+            } else if (s1.value == "aliya") {
+                var optionArray = ["Teaching|Teaching", "Song|Song", "Speech ARB|Speech ARB", "Speech MLM|Speech MLM"];
+            }
+            for (var option in optionArray) {
+                var pair = optionArray[option].split("|");
+                var newOption = document.createElement("option");
+                newOption.value = pair[0];
+                newOption.innerHTML = pair[1];
+                s2.options.add(newOption);
+            }
+        }
+        function actionOnSubmit() {
+
+            //Get the select select list and store in a variable
+            var e = document.getElementById("program");
+
+            //Get the selected value of the select list
+            var formaction = e.options[e.selectedIndex].value;
+
+            //Update the form action
+            document.selectionform.action = formaction;
+
+        }
+    </script>
+</body>
+
+</html>
